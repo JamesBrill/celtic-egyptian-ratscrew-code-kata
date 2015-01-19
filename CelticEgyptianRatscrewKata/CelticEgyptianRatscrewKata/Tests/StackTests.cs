@@ -26,7 +26,20 @@ namespace CelticEgyptianRatscrewKata.Tests
             var stack = new Stack(expectedCardsInStack);
 
             CollectionAssert.AreEqual(stack, expectedCardsInStack);
-            
+        }
+
+        [Test]
+        public void CorrectNumberOfCardsReturned()
+        {
+            var expectedCardsInStack = new List<Card>
+            {
+                new Card(Suit.Clubs, Rank.Ace),
+                new Card(Suit.Clubs, Rank.Two),
+                new Card(Suit.Clubs, Rank.Three),
+            };
+            var stack = new Stack(expectedCardsInStack);
+            var numberOfCardsInStack = stack.Size;
+            Assert.AreEqual(3, numberOfCardsInStack);
         }
     }
 }

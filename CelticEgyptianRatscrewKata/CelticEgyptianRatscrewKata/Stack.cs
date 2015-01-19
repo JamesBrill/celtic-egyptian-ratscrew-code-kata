@@ -7,6 +7,14 @@ namespace CelticEgyptianRatscrewKata
     {
         private readonly List<Card> m_Cards;
 
+        public int Size 
+        {
+            get
+            {
+                return m_Cards.Count;
+            } 
+        }
+
         public Stack(IEnumerable<Card> cards)
         {
             m_Cards = new List<Card>(cards);
