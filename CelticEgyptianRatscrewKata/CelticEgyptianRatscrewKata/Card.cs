@@ -22,6 +22,11 @@
             return m_Suit == other.m_Suit && m_Rank == other.m_Rank;
         }
 
+        public bool SameRank(Card other)
+        {
+            return m_Rank == other.m_Rank;
+        }
+
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
