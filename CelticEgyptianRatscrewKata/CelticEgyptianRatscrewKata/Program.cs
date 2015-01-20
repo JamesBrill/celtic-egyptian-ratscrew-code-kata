@@ -17,6 +17,7 @@ namespace CelticEgyptianRatscrewKata
                 new Card(Suit.Clubs, Rank.Two),
                 new Card(Suit.Clubs, Rank.Two),
                 new Card(Suit.Clubs, Rank.Ace),
+                new Card(Suit.Clubs, Rank.Two)
             };
             var stack = new Stack(cardsInStack);
 
@@ -25,16 +26,10 @@ namespace CelticEgyptianRatscrewKata
             var container = containerBuilder.Build();
 
             var snapValidators = container.Resolve<IEnumerable<ISnapValidator>>();
-            var isValid = false;
-            foreach (var snapValidator in snapValidators)
+            foreach (var snapValidator in snapValidators.Where(snapValidator => snapValidator.IsValidSnap(stack)))
             {
-                if (snapValidator.IsValidSnap(stack))
-                {
-                    isValid = true;
-                    break;
-                }
+                Console.WriteLine("Contains valid " + snapValidator.Name + " snap.");
             }
-            Console.WriteLine(isValid);
             Console.ReadLine();
         }
     }
