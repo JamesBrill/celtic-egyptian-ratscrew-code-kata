@@ -14,7 +14,7 @@ namespace CelticEgyptianRatscrewKata.Tests
                 new Card(Suit.Clubs, Rank.Ace),
             };
             var stack = new Stack(cardsInStack);
-            var validator = new ConsecutiveRankValidator(ConsecutiveRankDistance.Standard);
+            var validator = new StandardSnapValidator();
             var isValid = validator.IsValidSnap(stack);
             Assert.That(isValid);
         }
@@ -29,7 +29,7 @@ namespace CelticEgyptianRatscrewKata.Tests
                 new Card(Suit.Clubs, Rank.Ace),
             };
             var stack = new Stack(cardsInStack);
-            var validator = new ConsecutiveRankValidator(ConsecutiveRankDistance.Standard);
+            var validator = new StandardSnapValidator();
             var isValid = validator.IsValidSnap(stack);
             Assert.That(!isValid);
         }
@@ -44,7 +44,7 @@ namespace CelticEgyptianRatscrewKata.Tests
                 new Card(Suit.Clubs, Rank.Ace),
             };
             var stack = new Stack(cardsInStack);
-            var validator = new ConsecutiveRankValidator(ConsecutiveRankDistance.Sandwich);
+            var validator = new SandwichSnapValidator();
             var isValid = validator.IsValidSnap(stack);
             Assert.That(isValid);
         }
@@ -60,7 +60,7 @@ namespace CelticEgyptianRatscrewKata.Tests
                 new Card(Suit.Clubs, Rank.Ace),
             };
             var stack = new Stack(cardsInStack);
-            var validator = new ConsecutiveRankValidator(ConsecutiveRankDistance.Sandwich);
+            var validator = new SandwichSnapValidator();
             var isValid = validator.IsValidSnap(stack);
             Assert.That(!isValid);
         }

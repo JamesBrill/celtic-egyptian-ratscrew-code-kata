@@ -48,7 +48,9 @@
     <Compile Include="ISnapValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rank.cs" />
+    <Compile Include="SandwichSnapValidator.cs" />
     <Compile Include="Stack.cs" />
+    <Compile Include="StandardSnapValidator.cs" />
     <Compile Include="Tests\SnapValidatorTests.cs" />
     <Compile Include="Tests\StackTests.cs" />
     <Compile Include="Suit.cs" />

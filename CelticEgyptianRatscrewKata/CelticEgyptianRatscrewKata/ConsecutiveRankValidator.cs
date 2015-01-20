@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CelticEgyptianRatscrewKata
 {
-    class ConsecutiveRankValidator : ISnapValidator
+    public class ConsecutiveRankValidator : ISnapValidator
     {
         public int Distance { get; set; }
 
