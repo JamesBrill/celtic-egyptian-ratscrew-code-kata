@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CelticEgyptianRatscrewKata
 {
@@ -13,6 +14,14 @@ namespace CelticEgyptianRatscrewKata
             {
                 return m_Cards.Count;
             } 
+        }
+
+        public Card Top
+        {
+            get
+            {
+                return m_Cards.Last();
+            }
         }
 
         public Stack(IEnumerable<Card> cards)
