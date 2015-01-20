@@ -8,15 +8,15 @@ namespace CelticEgyptianRatscrewKata
 {
     public class ConsecutiveRankValidator : IConsecutiveRankValidator
     {
-        public bool IsValidSnap(Stack stack, ConsecutiveRankDistance distance)
+        public bool IsValidSnap(Stack stack, int distanceBetweenConsecutiveRanks)
         {
-            if (stack.Size <= (int) distance)
+            if (stack.Size <= distanceBetweenConsecutiveRanks)
             {
                 return false;
             }
             var currentEnumerator = stack.GetEnumerator();
             var previousEnumerator = stack.GetEnumerator();
-            for (var i = 0; i < (int) distance; i++)
+            for (var i = 0; i < distanceBetweenConsecutiveRanks; i++)
             {
                 currentEnumerator.MoveNext();
             }

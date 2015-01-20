@@ -13,7 +13,7 @@
 
         public bool IsValidSnap(Stack stack)
         {
-            return ConsecutiveRankValidator.IsValidSnap(stack, ConsecutiveRankDistance.Sandwich);
+            return ConsecutiveRankValidator.IsValidSnap(stack, 2);
         }
     }
 }

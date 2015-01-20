@@ -2,6 +2,6 @@
 {
     public interface IConsecutiveRankValidator
     {
-        bool IsValidSnap(Stack stack, ConsecutiveRankDistance distance);
+        bool IsValidSnap(Stack stack, int distanceBetweenConsecutiveRanks);
     }
 }
