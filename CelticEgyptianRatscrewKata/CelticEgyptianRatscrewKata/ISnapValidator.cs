@@ -8,6 +8,7 @@ namespace CelticEgyptianRatscrewKata
 {
     public interface ISnapValidator
     {
+        string Name { get; }
         bool IsValidSnap(Stack stack);
     }
 }
