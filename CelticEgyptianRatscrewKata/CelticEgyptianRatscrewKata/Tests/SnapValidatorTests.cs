@@ -79,5 +79,33 @@ namespace CelticEgyptianRatscrewKata.Tests
             var isValid = validator.IsValidSnap(stack);
             Assert.That(!isValid);
         }
+
+        [Test]
+        public void DarkQueenOnTopIsValidSnap()
+        {
+            var cardsInStack = new List<Card>
+            {
+                new Card(Suit.Clubs, Rank.Ace),
+                new Card(Suit.Spades, Rank.Queen)
+            };
+            var stack = new Stack(cardsInStack);
+            var validator = m_SnapValidators.First(x => x.GetType() == typeof(DarkQueenSnapValidator));
+            var isValid = validator.IsValidSnap(stack);
+            Assert.That(isValid);
+        }
+
+        [Test]
+        public void DarkQueenNotOnTopIsNotValidSnap()
+        {
+            var cardsInStack = new List<Card>
+            {
+                new Card(Suit.Spades, Rank.Queen),
+                new Card(Suit.Clubs, Rank.Ace)
+            };
+            var stack = new Stack(cardsInStack);
+            var validator = m_SnapValidators.First(x => x.GetType() == typeof(DarkQueenSnapValidator));
+            var isValid = validator.IsValidSnap(stack);
+            Assert.That(!isValid);
+        }
     }
 }
