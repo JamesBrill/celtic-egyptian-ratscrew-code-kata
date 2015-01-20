@@ -6,12 +6,12 @@
 
         public SandwichSnapValidator()
         {
-            ConsecutiveRankValidator = new ConsecutiveRankValidator(ConsecutiveRankDistance.Sandwich);
+            ConsecutiveRankValidator = new ConsecutiveRankValidator();
         }
 
         public bool IsValidSnap(Stack stack)
         {
-            return ConsecutiveRankValidator.IsValidSnap(stack);
+            return ConsecutiveRankValidator.IsValidSnap(stack, ConsecutiveRankDistance.Sandwich);
         }
     }
 }

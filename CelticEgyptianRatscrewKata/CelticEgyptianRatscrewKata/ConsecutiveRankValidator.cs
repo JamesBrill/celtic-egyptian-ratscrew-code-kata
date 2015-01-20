@@ -6,24 +6,17 @@ using System.Threading.Tasks;
 
 namespace CelticEgyptianRatscrewKata
 {
-    public class ConsecutiveRankValidator : ISnapValidator
+    public class ConsecutiveRankValidator : IConsecutiveRankValidator
     {
-        public int Distance { get; set; }
-
-        public ConsecutiveRankValidator(ConsecutiveRankDistance distance)
+        public bool IsValidSnap(Stack stack, ConsecutiveRankDistance distance)
         {
-            Distance = (int)distance;
-        }
-
-        public bool IsValidSnap(Stack stack)
-        {
-            if (stack.Size <= Distance)
+            if (stack.Size <= (int) distance)
             {
                 return false;
             }
             var currentEnumerator = stack.GetEnumerator();
             var previousEnumerator = stack.GetEnumerator();
-            for (var i = 0; i < Distance; i++)
+            for (var i = 0; i < (int) distance; i++)
             {
                 currentEnumerator.MoveNext();
             }

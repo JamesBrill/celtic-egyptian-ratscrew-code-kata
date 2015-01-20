@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CelticEgyptianRatscrewKata
 {
-    interface ISnapValidator
+    public interface ISnapValidator
     {
         bool IsValidSnap(Stack stack);
     }

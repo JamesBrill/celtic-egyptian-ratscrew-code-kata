@@ -6,12 +6,12 @@
 
         public StandardSnapValidator()
         {
-            ConsecutiveRankValidator = new ConsecutiveRankValidator(ConsecutiveRankDistance.Standard);
+            ConsecutiveRankValidator = new ConsecutiveRankValidator();
         }
 
         public bool IsValidSnap(Stack stack)
         {
-            return ConsecutiveRankValidator.IsValidSnap(stack);
+            return ConsecutiveRankValidator.IsValidSnap(stack, ConsecutiveRankDistance.Standard);
         }
     }
 }
