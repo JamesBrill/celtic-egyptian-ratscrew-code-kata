@@ -14,8 +14,9 @@ namespace CelticEgyptianRatscrewKata
         {
             builder.RegisterType<ConsecutiveRankValidator>().As<IConsecutiveRankValidator>();
 
-            builder.RegisterType<StandardSnapValidator>().As<ISnapValidator>();
+            builder.RegisterType<DarkQueenSnapValidator>().As<ISnapValidator>();
             builder.RegisterType<SandwichSnapValidator>().As<ISnapValidator>();
+            builder.RegisterType<StandardSnapValidator>().As<ISnapValidator>();
         }
     }
 }

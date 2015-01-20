@@ -51,6 +51,7 @@
     <Compile Include="Card.cs" />
     <Compile Include="ConsecutiveRankDistance.cs" />
     <Compile Include="ConsecutiveRankValidator.cs" />
+    <Compile Include="DarkQueenSnapValidator.cs" />
     <Compile Include="IConsecutiveRankValidator.cs" />
     <Compile Include="ISnapValidator.cs" />
     <Compile Include="Program.cs" />

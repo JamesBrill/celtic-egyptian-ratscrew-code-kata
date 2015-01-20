@@ -17,7 +17,8 @@ namespace CelticEgyptianRatscrewKata
                 new Card(Suit.Clubs, Rank.Two),
                 new Card(Suit.Clubs, Rank.Two),
                 new Card(Suit.Clubs, Rank.Ace),
-                new Card(Suit.Clubs, Rank.Two)
+                new Card(Suit.Clubs, Rank.Two),
+                new Card(Suit.Spades, Rank.Queen)
             };
             var stack = new Stack(cardsInStack);
 
