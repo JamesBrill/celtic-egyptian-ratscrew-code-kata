@@ -2,11 +2,11 @@
 {
     public class SandwichSnapValidator : ISnapValidator
     {
-        public ConsecutiveRankValidator ConsecutiveRankValidator { get; set; }
+        public IConsecutiveRankValidator ConsecutiveRankValidator { get; set; }
 
-        public SandwichSnapValidator()
+        public SandwichSnapValidator(IConsecutiveRankValidator validator)
         {
-            ConsecutiveRankValidator = new ConsecutiveRankValidator();
+            ConsecutiveRankValidator = validator;
         }
 
         public bool IsValidSnap(Stack stack)
