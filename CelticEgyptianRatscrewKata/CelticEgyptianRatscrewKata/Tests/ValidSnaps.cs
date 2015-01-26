@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 
@@ -67,11 +68,42 @@ namespace CelticEgyptianRatscrewKata.Tests
 				Assert.That(theSnap, Is.False);
 			}
 
+			[Test]
+			public void Should_Match_Two_Consecutive_Cards_Not_On_Top_Of_The_Stack()
+			{
+				var stack = new Stack(new List<Card>
+				{
+					new Card(Suit.Hearts, Rank.Two),
+					new Card(Suit.Clubs, Rank.Ace),
+					new Card(Suit.Diamonds, Rank.Ace)
+				});
+				var standardSnap = new StandardSnap();
+
+				var snapMatched = standardSnap.IsValidFor(stack);
+
+				Assert.That(snapMatched);
+			}
+
 			private bool IsValidFor(Stack stack)
 			{
-				var stackFrame = stack.Take(2);
+				using (var iterator = stack.GetEnumerator())
+				{
+					iterator.MoveNext();
+					var first = iterator.Current;
+					while (iterator.MoveNext())
+					{
+						var second = iterator.Current;
 
-				return stack.Count() != 1 && stackFrame.First().HasSameRankAs(stackFrame.Last());
+						if (!first.Equals(second) && first.HasSameRankAs(second))
+						{
+							return true;
+						}
+
+						first = second;
+					}
+				}
+
+				return false;
 			}
 		}
 	}
