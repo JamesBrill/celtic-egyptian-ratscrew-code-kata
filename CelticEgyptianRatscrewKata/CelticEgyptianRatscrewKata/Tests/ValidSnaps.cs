@@ -157,13 +157,30 @@ namespace CelticEgyptianRatscrewKata.Tests
 				Assert.That(theSnap, Is.False);
 			}
 
+			[Test]
+			public void Should_Match_Stack_Where_Sandwich_Snap_Is_Not_On_Top()
+			{
+				var stack = new Stack(new List<Card>
+				{
+					new Card(Suit.Clubs, Rank.Three),
+					new Card(Suit.Clubs, Rank.Ace),
+					new Card(Suit.Clubs, Rank.Two),
+					new Card(Suit.Diamonds, Rank.Ace)
+				});
+
+				var snapMatched = new SandwichSnap().IsValidFor(stack);
+
+				Assert.That(snapMatched);
+			}
+
 			private bool IsValidFor(Stack stack)
 			{
 				if (stack.Count() < 3)
 				{
 					return false;
 				}
-				var firstCard = stack.First();
+
+				var firstCard = stack.Skip(stack.Count() - 3).First();
 				var lastCard = stack.Last();
 				return firstCard.HasSameRankAs(lastCard);
 			}
