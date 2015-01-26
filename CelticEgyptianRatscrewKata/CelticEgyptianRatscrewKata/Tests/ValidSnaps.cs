@@ -106,5 +106,24 @@ namespace CelticEgyptianRatscrewKata.Tests
 				return false;
 			}
 		}
+
+		[TestFixture]
+		class SandwichSnap
+		{
+			[Test]
+			public void Should_Match_Two_Cards_With_The_Same_Rank_Separated_By_A_Card_With_A_Different_Rank()
+			{
+				var stack = new Stack(new List<Card>
+				{
+					new Card(Suit.Clubs, Rank.Ace),
+					new Card(Suit.Clubs, Rank.Two),
+					new Card(Suit.Diamonds, Rank.Ace)
+				});
+
+				var snapMatched = new SandwichSnap().IsValidFor(stack);
+
+				Assert.That(snapMatched);
+			}
+		}
 	}
 }
