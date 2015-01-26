@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 
@@ -8,10 +7,10 @@ namespace CelticEgyptianRatscrewKata.Tests
 	class ValidSnapsIncludes
 	{
 		[TestFixture]
-		class StandardSnap
+		class StandardSnapShould
 		{
 			[Test]
-			public void Should_Match_Two_Consecutive_Cards_Of_The_Same_Rank()
+			public void Match_Two_Consecutive_Cards_Of_The_Same_Rank()
 			{
 				var cards = new List<Card>
 				{
@@ -27,7 +26,7 @@ namespace CelticEgyptianRatscrewKata.Tests
 			}
 
 			[Test]
-			public void Should_Not_Match_For_A_Single_Card_Stack()
+			public void Not_Match_For_A_Single_Card_Stack()
 			{
 				var stack = new Stack(new List<Card> { new Card(Suit.Clubs, Rank.Ace) });
 
@@ -38,7 +37,7 @@ namespace CelticEgyptianRatscrewKata.Tests
 			}
 
 			[Test]
-			public void Should_Not_Match_Stack_Where_All_Cards_Have_Different_Ranks()
+			public void Not_Match_Stack_Where_All_Cards_Have_Different_Ranks()
 			{
 				var stack = new Stack(new List<Card>
 				{
@@ -53,7 +52,7 @@ namespace CelticEgyptianRatscrewKata.Tests
 			}
 
 			[Test]
-			public void Should_Not_Match_Stack_Where_Consecutive_Cards_Have_Different_Ranks()
+			public void Not_Match_Stack_Where_Consecutive_Cards_Have_Different_Ranks()
 			{
 				var stack = new Stack(new List<Card>
 				{
@@ -69,7 +68,7 @@ namespace CelticEgyptianRatscrewKata.Tests
 			}
 
 			[Test]
-			public void Should_Match_Two_Consecutive_Cards_Not_On_Top_Of_The_Stack()
+			public void Match_Two_Consecutive_Cards_Not_On_Top_Of_The_Stack()
 			{
 				var stack = new Stack(new List<Card>
 				{
@@ -83,24 +82,13 @@ namespace CelticEgyptianRatscrewKata.Tests
 
 				Assert.That(snapMatched);
 			}
-
-			private bool IsValidFor(Stack stack)
-			{
-				if (stack.Count() < 2)
-				{
-					return false;
-				}
-
-				var windows = stack.ToWindowedEnumerable(2);
-				return windows.Any(window => window.First().HasSameRankAs(window.Last()));
-			}
 		}
 
 		[TestFixture]
-		class SandwichSnap
+		class SandwichSnapShould
 		{
 			[Test]
-			public void Should_Match_Two_Cards_With_The_Same_Rank_Separated_By_A_Card_With_A_Different_Rank()
+			public void Match_Two_Cards_With_The_Same_Rank_Separated_By_A_Card_With_A_Different_Rank()
 			{
 				var stack = new Stack(new List<Card>
 				{
@@ -117,7 +105,7 @@ namespace CelticEgyptianRatscrewKata.Tests
 			[TestCase(2)]
 			[TestCase(1)]
 			[TestCase(0)]
-			public void Should_Not_Match_Stack_With_Less_Than_Three_Cards(int size)
+			public void Not_Match_Stack_With_Less_Than_Three_Cards(int size)
 			{
 				var cards = new List<Card>
 				{
@@ -132,7 +120,7 @@ namespace CelticEgyptianRatscrewKata.Tests
 			}
 
 			[Test]
-			public void Should_Not_Match_Stack_Where_All_Cards_Have_Different_Ranks()
+			public void Not_Match_Stack_Where_All_Cards_Have_Different_Ranks()
 			{
 				var stack = new Stack(new List<Card>
 				{
@@ -147,7 +135,7 @@ namespace CelticEgyptianRatscrewKata.Tests
 			}
 
 			[Test]
-			public void Should_Match_Stack_Where_Sandwich_Snap_Is_Not_On_Top()
+			public void Match_Stack_Where_Sandwich_Snap_Is_Not_On_Top()
 			{
 				var stack = new Stack(new List<Card>
 				{
@@ -163,7 +151,7 @@ namespace CelticEgyptianRatscrewKata.Tests
 			}
 
 			[Test]
-			public void Should_Match_Stack_With_Sandwich_Snap_Not_On_The_Bottom()
+			public void Match_Stack_With_Sandwich_Snap_Not_On_The_Bottom()
 			{
 				var stack = new Stack(new List<Card>
 				{
@@ -179,7 +167,7 @@ namespace CelticEgyptianRatscrewKata.Tests
 			}
 			
 			[Test]
-			public void Should_Match_Stack_With_Sandwich_Snap_In_The_Middle()
+			public void Match_Stack_With_Sandwich_Snap_In_The_Middle()
 			{
 				var stack = new Stack(new List<Card>
 				{
@@ -193,29 +181,6 @@ namespace CelticEgyptianRatscrewKata.Tests
 				var snapMatched = new SandwichSnap().IsValidFor(stack);
 
 				Assert.That(snapMatched);
-			}
-
-			private bool IsValidFor(Stack stack)
-			{
-				if (stack.Count() < 3)
-				{
-					return false;
-				}
-
-				var windows = stack.ToWindowedEnumerable(3);
-				return windows.Any(window => window.First().HasSameRankAs(window.Last()));
-			}
-		}
-	}
-
-	public static class EnumerableExtensions
-	{
-		public static IEnumerable<IEnumerable<T>> ToWindowedEnumerable<T>(this IEnumerable<T> source, int windowSize)
-		{
-			var numberOfWindows = source.Count() - windowSize + 1;
-			for (int i = 0; i < numberOfWindows; i++)
-			{
-				yield return source.Skip(i).Take(windowSize);
 			}
 		}
 	}
