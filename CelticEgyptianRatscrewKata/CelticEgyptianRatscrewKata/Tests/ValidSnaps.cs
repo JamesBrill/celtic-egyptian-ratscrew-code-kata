@@ -125,14 +125,16 @@ namespace CelticEgyptianRatscrewKata.Tests
 				Assert.That(snapMatched);
 			}
 
-			[Test]
-			public void Should_Not_Match_Stack_With_Less_Than_Three_Cards()
+			[TestCase(2)]
+			[TestCase(1)]
+			public void Should_Not_Match_Stack_With_Less_Than_Three_Cards(int size)
 			{
-				var stack = new Stack(new List<Card>
+				var cards = new List<Card>
 				{
 					new Card(Suit.Clubs, Rank.Ace),
 					new Card(Suit.Diamonds, Rank.Ace)
-				});
+				};
+				var stack = new Stack(cards.Take(size));
 
 				var theSnap = new SandwichSnap().IsValidFor(stack);
 
@@ -141,7 +143,7 @@ namespace CelticEgyptianRatscrewKata.Tests
 
 			private bool IsValidFor(Stack stack)
 			{
-				return stack.Count() != 2;
+				return stack.Count() >= 3;
 			}
 		}
 	}
