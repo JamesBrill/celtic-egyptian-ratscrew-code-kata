@@ -127,6 +127,7 @@ namespace CelticEgyptianRatscrewKata.Tests
 
 			[TestCase(2)]
 			[TestCase(1)]
+			[TestCase(0)]
 			public void Should_Not_Match_Stack_With_Less_Than_Three_Cards(int size)
 			{
 				var cards = new List<Card>
@@ -158,9 +159,13 @@ namespace CelticEgyptianRatscrewKata.Tests
 
 			private bool IsValidFor(Stack stack)
 			{
+				if (stack.Count() < 3)
+				{
+					return false;
+				}
 				var firstCard = stack.First();
 				var lastCard = stack.Last();
-				return stack.Count() >= 3 && firstCard.HasSameRankAs(lastCard);
+				return firstCard.HasSameRankAs(lastCard);
 			}
 		}
 	}
