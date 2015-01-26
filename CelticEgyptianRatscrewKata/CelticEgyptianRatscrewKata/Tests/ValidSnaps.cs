@@ -51,9 +51,27 @@ namespace CelticEgyptianRatscrewKata.Tests
 				Assert.That(theSnap, Is.False);
 			}
 
+			[Test]
+			public void Should_Not_Match_Stack_Where_Consecutive_Cards_Have_Different_Ranks()
+			{
+				var stack = new Stack(new List<Card>
+				{
+					new Card(Suit.Clubs, Rank.Ace),
+					new Card(Suit.Hearts, Rank.Two),
+					new Card(Suit.Diamonds, Rank.Ace)
+				});
+				var standardSnap = new StandardSnap();
+
+				var theSnap = standardSnap.IsValidFor(stack);
+
+				Assert.That(theSnap, Is.False);
+			}
+
 			private bool IsValidFor(Stack stack)
 			{
-				return stack.Count() != 1 && stack.First().HasSameRankAs(stack.Last());
+				var stackFrame = stack.Take(2);
+
+				return stack.Count() != 1 && stackFrame.First().HasSameRankAs(stackFrame.Last());
 			}
 		}
 	}
