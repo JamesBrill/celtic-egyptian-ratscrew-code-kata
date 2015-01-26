@@ -173,6 +173,22 @@ namespace CelticEgyptianRatscrewKata.Tests
 				Assert.That(snapMatched);
 			}
 
+			[Test]
+			public void Should_Match_Stack_With_Sandwich_Snap_Not_On_The_Bottom()
+			{
+				var stack = new Stack(new List<Card>
+				{
+					new Card(Suit.Clubs, Rank.Ace),
+					new Card(Suit.Clubs, Rank.Two),
+					new Card(Suit.Diamonds, Rank.Ace),
+					new Card(Suit.Clubs, Rank.Three)
+				});
+
+				var snapMatched = new SandwichSnap().IsValidFor(stack);
+
+				Assert.That(snapMatched);
+			}
+
 			private bool IsValidFor(Stack stack)
 			{
 				if (stack.Count() < 3)
@@ -180,9 +196,14 @@ namespace CelticEgyptianRatscrewKata.Tests
 					return false;
 				}
 
-				var firstCard = stack.Skip(stack.Count() - 3).First();
-				var lastCard = stack.Last();
-				return firstCard.HasSameRankAs(lastCard);
+				var thirdFromBottomCard = stack.Skip(stack.Count() - 3).First();
+				var bottomCard = stack.Last();
+				var validSnapOnBottom = thirdFromBottomCard.HasSameRankAs(bottomCard);
+
+				var thirdFromTopCard = stack.Skip(2).First();
+				var topCard = stack.First();
+				var validSnapOnTop = thirdFromTopCard.HasSameRankAs(topCard);
+				return validSnapOnBottom || validSnapOnTop;
 			}
 		}
 	}
