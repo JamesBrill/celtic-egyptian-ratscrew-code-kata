@@ -86,20 +86,20 @@ namespace CelticEgyptianRatscrewKata.Tests
 
 			private bool IsValidFor(Stack stack)
 			{
-				using (var iterator = stack.GetEnumerator())
+				using (var firstIterator = stack.GetEnumerator())
+				using (var secondIterator = stack.GetEnumerator())
 				{
-					iterator.MoveNext();
-					var first = iterator.Current;
-					while (iterator.MoveNext())
+					secondIterator.MoveNext();
+
+					while (firstIterator.MoveNext() && secondIterator.MoveNext())
 					{
-						var second = iterator.Current;
+						var first = firstIterator.Current;
+						var second = secondIterator.Current;
 
 						if (!first.Equals(second) && first.HasSameRankAs(second))
 						{
 							return true;
 						}
-
-						first = second;
 					}
 				}
 
