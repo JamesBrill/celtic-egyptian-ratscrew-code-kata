@@ -124,6 +124,25 @@ namespace CelticEgyptianRatscrewKata.Tests
 
 				Assert.That(snapMatched);
 			}
+
+			[Test]
+			public void Should_Not_Match_Stack_With_Less_Than_Three_Cards()
+			{
+				var stack = new Stack(new List<Card>
+				{
+					new Card(Suit.Clubs, Rank.Ace),
+					new Card(Suit.Diamonds, Rank.Ace)
+				});
+
+				var theSnap = new SandwichSnap().IsValidFor(stack);
+
+				Assert.That(theSnap, Is.False);
+			}
+
+			private bool IsValidFor(Stack stack)
+			{
+				return stack.Count() != 2;
+			}
 		}
 	}
 }
