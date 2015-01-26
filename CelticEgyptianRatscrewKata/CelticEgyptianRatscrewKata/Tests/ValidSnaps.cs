@@ -188,6 +188,23 @@ namespace CelticEgyptianRatscrewKata.Tests
 
 				Assert.That(snapMatched);
 			}
+			
+			[Test]
+			public void Should_Match_Stack_With_Sandwich_Snap_In_The_Middle()
+			{
+				var stack = new Stack(new List<Card>
+				{
+					new Card(Suit.Hearts, Rank.Three),
+					new Card(Suit.Clubs, Rank.Ace),
+					new Card(Suit.Clubs, Rank.Two),
+					new Card(Suit.Diamonds, Rank.Ace),
+					new Card(Suit.Clubs, Rank.Three)
+				});
+
+				var snapMatched = new SandwichSnap().IsValidFor(stack);
+
+				Assert.That(snapMatched);
+			}
 
 			private bool IsValidFor(Stack stack)
 			{
@@ -196,14 +213,20 @@ namespace CelticEgyptianRatscrewKata.Tests
 					return false;
 				}
 
-				var thirdFromBottomCard = stack.Skip(stack.Count() - 3).First();
-				var bottomCard = stack.Last();
-				var validSnapOnBottom = thirdFromBottomCard.HasSameRankAs(bottomCard);
+				var windows = stack.ToWindowedEnumerable(3);
+				return windows.Any(window => window.First().HasSameRankAs(window.Last()));
+			}
+		}
+	}
 
-				var thirdFromTopCard = stack.Skip(2).First();
-				var topCard = stack.First();
-				var validSnapOnTop = thirdFromTopCard.HasSameRankAs(topCard);
-				return validSnapOnBottom || validSnapOnTop;
+	public static class EnumerableExtensions
+	{
+		public static IEnumerable<IEnumerable<T>> ToWindowedEnumerable<T>(this IEnumerable<T> source, int windowSize)
+		{
+			var numberOfWindows = source.Count() - windowSize + 1;
+			for (int i = 0; i < numberOfWindows; i++)
+			{
+				yield return source.Skip(i).Take(windowSize);
 			}
 		}
 	}
