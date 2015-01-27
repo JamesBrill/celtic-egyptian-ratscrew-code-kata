@@ -201,9 +201,24 @@ namespace CelticEgyptianRatscrewKata.Tests
 				Assert.That(snapMatched);
 			}
 
+			[Test]
+			public void Not_Match_The_Queen_Of_Spades_Not_On_Top_Of_The_Stack()
+			{
+				var stack = new Stack(new List<Card>
+				{
+					new Card(Suit.Clubs, Rank.Ace),
+					new Card(Suit.Spades, Rank.Queen)
+				});
+				var sut = CreateSut();
+
+				var theSnap = sut.IsValidFor(stack);
+
+				Assert.That(theSnap, Is.False);
+			}
+
 			private bool IsValidFor(Stack stack)
 			{
-				return true;
+				return stack.Count() == 1;
 			}
 
 			private static DarkQueenSnapShould CreateSut()
