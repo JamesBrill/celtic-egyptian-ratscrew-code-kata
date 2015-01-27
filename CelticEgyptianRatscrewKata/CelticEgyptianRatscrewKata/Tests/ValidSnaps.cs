@@ -232,8 +232,24 @@ namespace CelticEgyptianRatscrewKata.Tests
 				Assert.That(theSnap, Is.False);
 			}
 
+			[Test]
+			public void Not_Match_On_An_Empty_Stack()
+			{
+				var stack = new Stack(Enumerable.Empty<Card>());
+				var sut = CreateSut();
+
+				var theSnap = sut.IsValidFor(stack);
+
+				Assert.That(theSnap, Is.False);
+			}
+
 			private bool IsValidFor(Stack stack)
 			{
+				if (!stack.Any())
+				{
+					return false;
+				}
+
 				return stack.First().Equals(QueenOfSpades);
 			}
 
