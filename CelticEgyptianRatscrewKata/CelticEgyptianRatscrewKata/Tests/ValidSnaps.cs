@@ -281,19 +281,9 @@ namespace CelticEgyptianRatscrewKata.Tests
 				Assert.That(theSnap, Is.False);
 			}
 
-			private bool IsValidFor(Stack stack)
+			private static DarkQueenSnap CreateSut()
 			{
-				if (!stack.Any())
-				{
-					return false;
-				}
-
-				return stack.First().Equals(QueenOfSpades);
-			}
-
-			private static DarkQueenSnapShould CreateSut()
-			{
-				return new DarkQueenSnapShould();
+				return new DarkQueenSnap();
 			}
 		}
 	}
