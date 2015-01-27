@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace CelticEgyptianRatscrewKata
 {
-	public class WindowedSnap
+	public class WindowedSnap : ISnapRule
 	{
 		private readonly int _windowSize;
 
