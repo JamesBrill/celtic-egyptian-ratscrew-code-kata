@@ -4,7 +4,7 @@ namespace CelticEgyptianRatscrewKata
 {
 	public class DarkQueenSnap
 	{
-		private readonly Card QueenOfSpades = new Card(Suit.Spades, Rank.Queen);
+		private readonly Card queenOfSpades = new Card(Suit.Spades, Rank.Queen);
 
 		public bool IsValidFor(Stack stack)
 		{
@@ -13,7 +13,7 @@ namespace CelticEgyptianRatscrewKata
 				return false;
 			}
 
-			return stack.First().Equals(QueenOfSpades);
+			return stack.First().Equals(queenOfSpades);
 		}
 	}
 }
