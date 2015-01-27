@@ -6,6 +6,11 @@ namespace CelticEgyptianRatscrewKata.Tests
 {
 	class ValidSnapsIncludes
 	{
+		private static ISnapRule CreateSut()
+		{
+			return new DarkQueenSnap();
+		}
+
 		[TestFixture]
 		class StandardSnapShould
 		{
@@ -279,11 +284,6 @@ namespace CelticEgyptianRatscrewKata.Tests
 				var theSnap = sut.IsValidFor(stack);
 
 				Assert.That(theSnap, Is.False);
-			}
-
-			private static DarkQueenSnap CreateSut()
-			{
-				return new DarkQueenSnap();
 			}
 		}
 	}
