@@ -8,7 +8,22 @@ namespace CelticEgyptianRatscrewKata.Tests
 	{
 		private static ISnapRule CreateSut()
 		{
-			return new DarkQueenSnap();
+			return new AllSnaps(new DarkQueenSnap());
+		}
+
+		public class AllSnaps : ISnapRule
+		{
+			private readonly IEnumerable<ISnapRule> snaps;
+
+			public AllSnaps(params ISnapRule[] snaps)
+			{
+				this.snaps = snaps;
+			}
+
+			public bool IsValidFor(Stack stack)
+			{
+				return snaps.Any(r => r.IsValidFor(stack));
+			}
 		}
 
 		[TestFixture]
