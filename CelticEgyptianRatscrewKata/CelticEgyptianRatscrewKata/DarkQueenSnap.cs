@@ -2,7 +2,7 @@
 
 namespace CelticEgyptianRatscrewKata
 {
-	public class DarkQueenSnap
+	public class DarkQueenSnap : ISnapRule
 	{
 		private readonly Card queenOfSpades = new Card(Suit.Spades, Rank.Queen);
 
