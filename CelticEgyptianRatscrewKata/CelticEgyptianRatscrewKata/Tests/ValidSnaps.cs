@@ -6,14 +6,6 @@ namespace CelticEgyptianRatscrewKata.Tests
 {
 	class ValidSnapsIncludes
 	{
-		private static ISnapRule CreateSut()
-		{
-			return new AllSnaps(
-				new StandardSnap(),
-				new SandwichSnap(),
-				new DarkQueenSnap());
-		}
-
 		public class AllSnaps : ISnapRule
 		{
 			private readonly IEnumerable<ISnapRule> snaps;
@@ -52,6 +44,14 @@ namespace CelticEgyptianRatscrewKata.Tests
 				var theSnap = sut.IsValidFor(stack);
 
 				Assert.That(theSnap, Is.False);
+			}
+
+			private static ISnapRule CreateSut()
+			{
+				return new AllSnaps(
+					new StandardSnap(),
+					new SandwichSnap(),
+					new DarkQueenSnap());
 			}
 
 			private static IEnumerable<Stack> DarkQueenSnaps
