@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CelticEgyptianRatscrewKata
+namespace CelticEgyptianRatscrewKata.Rules
 {
 	public class AllSnaps : ISnapRule
 	{

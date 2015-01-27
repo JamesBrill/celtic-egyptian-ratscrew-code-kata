@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace CelticEgyptianRatscrewKata
+namespace CelticEgyptianRatscrewKata.Rules
 {
 	public class WindowedSnap : ISnapRule
 	{

@@ -1,4 +1,4 @@
-namespace CelticEgyptianRatscrewKata
+namespace CelticEgyptianRatscrewKata.Rules
 {
 	public sealed class SandwichSnap : WindowedSnap
 	{

@@ -1,4 +1,4 @@
-﻿namespace CelticEgyptianRatscrewKata
+﻿namespace CelticEgyptianRatscrewKata.Rules
 {
 	public interface ISnapRule
 	{
