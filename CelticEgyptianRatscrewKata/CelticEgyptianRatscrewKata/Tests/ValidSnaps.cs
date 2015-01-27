@@ -195,6 +195,22 @@ namespace CelticEgyptianRatscrewKata.Tests
 			}
 
 			[Test]
+			public void Not_Match_When_There_Is_More_Than_One_Card_In_The_Middle_Of_The_Sandwich()
+			{
+				var stack = new Stack(new List<Card>
+				{
+					new Card(Suit.Clubs, Rank.Ace),
+					new Card(Suit.Clubs, Rank.Two),
+					new Card(Suit.Clubs, Rank.Three),
+					new Card(Suit.Diamonds, Rank.Ace)
+				});
+
+				var theSnap = new SandwichSnap().IsValidFor(stack);
+
+				Assert.That(theSnap, Is.False);
+			}
+
+			[Test]
 			public void Not_Match_On_An_Empty_Stack()
 			{
 				var stack = new Stack(Enumerable.Empty<Card>());
