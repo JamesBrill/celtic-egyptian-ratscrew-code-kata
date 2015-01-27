@@ -8,7 +8,7 @@ namespace CelticEgyptianRatscrewKata.Tests
 	{
 		private static ISnapRule CreateSut()
 		{
-			return new AllSnaps(new DarkQueenSnap());
+			return new AllSnaps(new StandardSnap(), new DarkQueenSnap());
 		}
 
 		public class AllSnaps : ISnapRule
@@ -30,6 +30,7 @@ namespace CelticEgyptianRatscrewKata.Tests
 		class AllSnapsShould
 		{
 			[TestCaseSource("DarkQueenSnaps")]
+			[TestCaseSource("StandardSnaps")]
 			public void Match_On_Dark_Queen_Snaps(Stack stack)
 			{
 				var sut = CreateSut();
@@ -46,6 +47,25 @@ namespace CelticEgyptianRatscrewKata.Tests
 					yield return new Stack(new List<Card>
 					{
 						new Card(Suit.Spades, Rank.Queen)
+					});
+				}
+			}
+
+			private static IEnumerable<Stack> StandardSnaps
+			{
+				get
+				{
+					yield return new Stack(new List<Card>
+					{
+						new Card(Suit.Clubs, Rank.Ace),
+						new Card(Suit.Diamonds, Rank.Ace)
+					});
+
+					yield return new Stack(new List<Card>
+					{
+						new Card(Suit.Hearts, Rank.Two),
+						new Card(Suit.Clubs, Rank.Ace),
+						new Card(Suit.Diamonds, Rank.Ace)
 					});
 				}
 			}
