@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllSnaps.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="DarkQueenSnap.cs" />
     <Compile Include="ISnapRule.cs" />
