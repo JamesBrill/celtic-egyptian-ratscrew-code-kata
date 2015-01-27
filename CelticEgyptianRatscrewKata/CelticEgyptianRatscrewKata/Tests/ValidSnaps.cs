@@ -165,7 +165,7 @@ namespace CelticEgyptianRatscrewKata.Tests
 
 				Assert.That(snapMatched);
 			}
-			
+
 			[Test]
 			public void Match_Stack_With_Sandwich_Snap_In_The_Middle()
 			{
