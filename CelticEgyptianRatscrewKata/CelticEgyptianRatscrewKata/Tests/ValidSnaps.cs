@@ -183,5 +183,33 @@ namespace CelticEgyptianRatscrewKata.Tests
 				Assert.That(snapMatched);
 			}
 		}
+
+		[TestFixture]
+		class DarkQueenSnapShould
+		{
+			[Test]
+			public void Match_The_Queen_Of_Spades_On_Top_Of_The_Stack()
+			{
+				var stack = new Stack(new List<Card>
+				{
+					new Card(Suit.Spades, Rank.Queen)
+				});
+				var sut = CreateSut();
+
+				var snapMatched = sut.IsValidFor(stack);
+
+				Assert.That(snapMatched);
+			}
+
+			private bool IsValidFor(Stack stack)
+			{
+				return true;
+			}
+
+			private static DarkQueenSnapShould CreateSut()
+			{
+				return new DarkQueenSnapShould();
+			}
+		}
 	}
 }
