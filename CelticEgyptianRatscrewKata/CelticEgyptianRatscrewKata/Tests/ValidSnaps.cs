@@ -8,7 +8,10 @@ namespace CelticEgyptianRatscrewKata.Tests
 	{
 		private static ISnapRule CreateSut()
 		{
-			return new AllSnaps(new StandardSnap(), new DarkQueenSnap());
+			return new AllSnaps(
+				new StandardSnap(),
+				new SandwichSnap(),
+				new DarkQueenSnap());
 		}
 
 		public class AllSnaps : ISnapRule
@@ -31,6 +34,7 @@ namespace CelticEgyptianRatscrewKata.Tests
 		{
 			[TestCaseSource("DarkQueenSnaps")]
 			[TestCaseSource("StandardSnaps")]
+			[TestCaseSource("SandwichSnaps")]
 			public void Match_On_Valid_Snaps(Stack stack)
 			{
 				var sut = CreateSut();
@@ -66,6 +70,44 @@ namespace CelticEgyptianRatscrewKata.Tests
 						new Card(Suit.Hearts, Rank.Two),
 						new Card(Suit.Clubs, Rank.Ace),
 						new Card(Suit.Diamonds, Rank.Ace)
+					});
+				}
+			}
+
+			private static IEnumerable<Stack> SandwichSnaps
+			{
+				get
+				{
+					yield return new Stack(new List<Card>
+					{
+						new Card(Suit.Clubs, Rank.Ace),
+						new Card(Suit.Clubs, Rank.Two),
+						new Card(Suit.Diamonds, Rank.Ace)
+					});
+
+					yield return new Stack(new List<Card>
+					{
+						new Card(Suit.Clubs, Rank.Three),
+						new Card(Suit.Clubs, Rank.Ace),
+						new Card(Suit.Clubs, Rank.Two),
+						new Card(Suit.Diamonds, Rank.Ace)
+					});
+
+					yield return new Stack(new List<Card>
+					{
+						new Card(Suit.Clubs, Rank.Ace),
+						new Card(Suit.Clubs, Rank.Two),
+						new Card(Suit.Diamonds, Rank.Ace),
+						new Card(Suit.Clubs, Rank.Three)
+					});
+
+					yield return new Stack(new List<Card>
+					{
+						new Card(Suit.Hearts, Rank.Three),
+						new Card(Suit.Clubs, Rank.Ace),
+						new Card(Suit.Clubs, Rank.Two),
+						new Card(Suit.Diamonds, Rank.Ace),
+						new Card(Suit.Clubs, Rank.Three)
 					});
 				}
 			}
