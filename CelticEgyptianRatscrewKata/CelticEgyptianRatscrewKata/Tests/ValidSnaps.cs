@@ -187,12 +187,14 @@ namespace CelticEgyptianRatscrewKata.Tests
 		[TestFixture]
 		class DarkQueenSnapShould
 		{
+			private readonly Card QueenOfSpades = new Card(Suit.Spades, Rank.Queen);
+
 			[Test]
 			public void Match_The_Queen_Of_Spades_On_Top_Of_The_Stack()
 			{
 				var stack = new Stack(new List<Card>
 				{
-					new Card(Suit.Spades, Rank.Queen)
+					QueenOfSpades
 				});
 				var sut = CreateSut();
 
@@ -207,7 +209,7 @@ namespace CelticEgyptianRatscrewKata.Tests
 				var stack = new Stack(new List<Card>
 				{
 					new Card(Suit.Clubs, Rank.Ace),
-					new Card(Suit.Spades, Rank.Queen)
+					QueenOfSpades
 				});
 				var sut = CreateSut();
 
