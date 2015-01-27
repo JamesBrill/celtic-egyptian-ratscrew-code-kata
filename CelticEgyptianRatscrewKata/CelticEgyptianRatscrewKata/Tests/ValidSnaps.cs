@@ -82,6 +82,17 @@ namespace CelticEgyptianRatscrewKata.Tests
 
 				Assert.That(snapMatched);
 			}
+
+			[Test]
+			public void Not_Match_On_An_Empty_Stack()
+			{
+				var stack = new Stack(Enumerable.Empty<Card>());
+				var sut = new StandardSnap();
+
+				var theSnap = sut.IsValidFor(stack);
+
+				Assert.That(theSnap, Is.False);
+			}
 		}
 
 		[TestFixture]
@@ -181,6 +192,17 @@ namespace CelticEgyptianRatscrewKata.Tests
 				var snapMatched = new SandwichSnap().IsValidFor(stack);
 
 				Assert.That(snapMatched);
+			}
+
+			[Test]
+			public void Not_Match_On_An_Empty_Stack()
+			{
+				var stack = new Stack(Enumerable.Empty<Card>());
+				var sut = new StandardSnap();
+
+				var theSnap = sut.IsValidFor(stack);
+
+				Assert.That(theSnap, Is.False);
 			}
 		}
 
