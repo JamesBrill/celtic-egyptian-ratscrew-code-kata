@@ -27,6 +27,24 @@ namespace CelticEgyptianRatscrewKata.Tests
 		}
 
 		[TestFixture]
+		class AllSnapsShould
+		{
+			[Test]
+			public void Match_On_Dark_Queen_Snaps()
+			{
+				var stack = new Stack(new List<Card>
+				{
+					new Card(Suit.Spades, Rank.Queen)
+				});
+				var sut = CreateSut();
+
+				var snapMatched = sut.IsValidFor(stack);
+
+				Assert.That(snapMatched);
+			}
+		}
+
+		[TestFixture]
 		class StandardSnapShould
 		{
 			[Test]
