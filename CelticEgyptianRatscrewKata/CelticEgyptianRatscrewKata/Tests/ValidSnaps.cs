@@ -31,7 +31,7 @@ namespace CelticEgyptianRatscrewKata.Tests
 		{
 			[TestCaseSource("DarkQueenSnaps")]
 			[TestCaseSource("StandardSnaps")]
-			public void Match_On_Dark_Queen_Snaps(Stack stack)
+			public void Match_On_Valid_Snaps(Stack stack)
 			{
 				var sut = CreateSut();
 
