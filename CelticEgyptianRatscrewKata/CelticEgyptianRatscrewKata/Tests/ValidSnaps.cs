@@ -44,6 +44,16 @@ namespace CelticEgyptianRatscrewKata.Tests
 				Assert.That(snapMatched);
 			}
 
+			[TestCaseSource("InvalidSnaps")]
+			public void Not_Match_On_InvalidSnaps(Stack stack)
+			{
+				var sut = CreateSut();
+
+				var theSnap = sut.IsValidFor(stack);
+
+				Assert.That(theSnap, Is.False);
+			}
+
 			private static IEnumerable<Stack> DarkQueenSnaps
 			{
 				get
@@ -108,6 +118,43 @@ namespace CelticEgyptianRatscrewKata.Tests
 						new Card(Suit.Clubs, Rank.Two),
 						new Card(Suit.Diamonds, Rank.Ace),
 						new Card(Suit.Clubs, Rank.Three)
+					});
+				}
+			}
+
+			private static IEnumerable<Stack> InvalidSnaps
+			{
+				get
+				{
+					yield return new Stack(Enumerable.Empty<Card>());
+
+					yield return new Stack(new List<Card> { new Card(Suit.Clubs, Rank.Ace) });
+
+					yield return new Stack(new List<Card>
+					{
+						new Card(Suit.Clubs, Rank.Ace),
+						new Card(Suit.Hearts, Rank.Two)
+					});
+
+					yield return new Stack(new List<Card>
+					{
+						new Card(Suit.Clubs, Rank.Ace),
+						new Card(Suit.Clubs, Rank.Two),
+						new Card(Suit.Diamonds, Rank.Three)
+					});
+
+					yield return new Stack(new List<Card>
+					{
+						new Card(Suit.Clubs, Rank.Ace),
+						new Card(Suit.Clubs, Rank.Two),
+						new Card(Suit.Clubs, Rank.Three),
+						new Card(Suit.Diamonds, Rank.Ace)
+					});
+
+					yield return new Stack(new List<Card>
+					{
+						new Card(Suit.Clubs, Rank.Ace),
+						new Card(Suit.Spades, Rank.Queen)
 					});
 				}
 			}
