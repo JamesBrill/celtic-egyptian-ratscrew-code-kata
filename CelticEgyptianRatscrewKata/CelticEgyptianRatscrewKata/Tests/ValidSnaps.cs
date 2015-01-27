@@ -434,6 +434,11 @@ namespace CelticEgyptianRatscrewKata.Tests
 
 				Assert.That(theSnap, Is.False);
 			}
+
+			private static DarkQueenSnap CreateSut()
+			{
+				return new DarkQueenSnap();
+			}
 		}
 	}
 }
