@@ -45,26 +45,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Rules\AllSnaps.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="Cards.cs" />
     <Compile Include="Dealer.cs" />
+    <Compile Include="Rules\DarkQueenSnap.cs" />
+    <Compile Include="Rules\ISnapRule.cs" />
     <Compile Include="IRandomNumberGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomNumberGenerator.cs" />
     <Compile Include="Rank.cs" />
     <Compile Include="Shuffler.cs" />
-    <Compile Include="SnapRules\DarkQueenSnapRule.cs" />
-    <Compile Include="SnapRules\IRule.cs" />
-    <Compile Include="SnapRules\SnapValidator.cs" />
-    <Compile Include="SnapRules\StandardSnapRule.cs" />
-    <Compile Include="Tests\DarkQueenSnapRuleTests.cs" />
-    <Compile Include="SnapRules\SandwichSnapRule.cs" />
+    <Compile Include="EnumerableExtensions.cs" />
+    <Compile Include="Rules\SandwichSnap.cs" />
     <Compile Include="Tests\DealerTests.cs" />
-    <Compile Include="Tests\SandwichSnapRuleTests.cs" />
     <Compile Include="Tests\ShufflerTests.cs" />
-    <Compile Include="Tests\SnapValidatorTests.cs" />
     <Compile Include="Suit.cs" />
-    <Compile Include="Tests\StandardSnapRuleTests.cs" />
+    <Compile Include="Rules\StandardSnap.cs" />
+    <Compile Include="Tests\ValidSnaps.cs" />
+    <Compile Include="Rules\WindowedSnap.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

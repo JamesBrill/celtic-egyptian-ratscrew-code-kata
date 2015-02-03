@@ -11,9 +11,10 @@
             m_Rank = rank;
         }
 
-        public Rank Rank { get { return m_Rank; } }
-
-        public Suit Suit { get { return m_Suit; } }
+	    public bool HasSameRankAs(Card otherCard)
+	    {
+		    return this.m_Rank == otherCard.m_Rank;
+	    }
 
         public override string ToString()
         {

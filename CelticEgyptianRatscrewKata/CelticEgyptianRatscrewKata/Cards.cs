@@ -13,11 +13,19 @@ namespace CelticEgyptianRatscrewKata
             m_Cards = new List<Card>(cards);
         }
 
+		/// <summary>
+		/// Used for receiving a card in a deal
+		/// </summary>
+		/// <param name="card"></param>
         public void AddToTop(Card card)
         {
             m_Cards.Add(card);
         }
 
+		/// <summary>
+		/// Used for playing cards and dealing cards to players
+		/// </summary>
+		/// <returns></returns>
         public Card Pop()
         {
             var first = m_Cards.First();
