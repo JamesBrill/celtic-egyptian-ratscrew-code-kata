@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace CelticEgyptianRatscrewKata.Tests
 {
     [TestFixture]
-    class PlayerFacts
+    class A_Player
     {
         [Test]
         public void Has_Won_If_They_Have_All_The_Cards()
