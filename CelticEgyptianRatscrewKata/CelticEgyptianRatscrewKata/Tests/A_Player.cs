@@ -61,6 +61,19 @@ namespace CelticEgyptianRatscrewKata.Tests
             Assert.AreEqual(handBeforeCallingSnap, handAfterCallingSnap);
         }
 
+        [Test]
+        public void Plays_A_Card_On_To_The_Top_Of_The_Stack()
+        {
+            var stack = Cards.Empty();
+            var playersTopCard = new Card(Suit.Clubs, Rank.Ace);
+            var player = CreateSut(Cards.With(playersTopCard));
+
+            player.PlayCard(stack);
+
+            var cardOnTopOfStack = stack.CardAt(stack.Count() - 1);
+            Assert.That(cardOnTopOfStack, Is.EqualTo(playersTopCard));
+        }
+
         private static Player CreateSut(Cards hand = null, ISnapRule snapRule = null)
         {
             if (hand == null)
@@ -109,6 +122,11 @@ namespace CelticEgyptianRatscrewKata.Tests
                 cardList.InsertRange(0, stack);
                 _cards = Cards.With(cardList.ToArray());
             }
+        }
+
+        public void PlayCard(Cards stack)
+        {
+            stack.AddToTop(_cards.CardAt(0));
         }
     }
 }
