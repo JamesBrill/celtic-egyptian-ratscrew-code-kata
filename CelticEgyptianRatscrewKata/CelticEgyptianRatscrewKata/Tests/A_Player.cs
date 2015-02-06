@@ -74,6 +74,17 @@ namespace CelticEgyptianRatscrewKata.Tests
             Assert.That(cardOnTopOfStack, Is.EqualTo(playersTopCard));
         }
 
+        [Test]
+        public void No_Longer_Has_A_Played_Card_In_Their_Hand()
+        {
+            var playersTopCard = new Card(Suit.Clubs, Rank.Five);
+            var player = CreateSut(Cards.With(playersTopCard));
+            
+            player.PlayCard(Cards.Empty());
+            
+            Assert.That(player.Hand, Is.Not.Contains(playersTopCard));
+        }
+
         private static Player CreateSut(Cards hand = null, ISnapRule snapRule = null)
         {
             if (hand == null)
@@ -127,6 +138,7 @@ namespace CelticEgyptianRatscrewKata.Tests
         public void PlayCard(Cards stack)
         {
             stack.AddToTop(_cards.CardAt(0));
+            _cards.RemoveCardAt(0);
         }
     }
 }
