@@ -32,7 +32,7 @@ namespace CelticEgyptianRatscrewKata.Tests
         }
 
         [Test]
-        public void If_Player_Correctly_Calls_Snap_Then_Stack_Is_Added_To_Bottom_Of_Their_Pile()
+        public void Correctly_Calling_Snap_Has_The_Stack_Added_To_The_Bottom_Of_Their_Pile()
         {
             var stack = Cards.With(new Card(Suit.Spades, Rank.Queen));
             var validSnap = new Mock<ISnapRule>();
