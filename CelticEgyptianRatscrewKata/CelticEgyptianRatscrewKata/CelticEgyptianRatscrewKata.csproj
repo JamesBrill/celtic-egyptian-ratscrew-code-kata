@@ -59,6 +59,7 @@
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="Rules\SandwichSnap.cs" />
     <Compile Include="Tests\DealerTests.cs" />
+    <Compile Include="Tests\PlayerFacts.cs" />
     <Compile Include="Tests\ShufflerTests.cs" />
     <Compile Include="Suit.cs" />
     <Compile Include="Rules\StandardSnap.cs" />
