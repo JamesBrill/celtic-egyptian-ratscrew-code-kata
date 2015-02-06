@@ -15,18 +15,30 @@ namespace CelticEgyptianRatscrewKata.Tests
 
             Assert.That(hasWon);
         }
+
+        [Test]
+        public void Has_Not_Won_If_They_Do_Not_Have_All_The_Cards()
+        {
+            var player = new Player(Cards.With(new Card(Suit.Clubs, Rank.Ace)));
+            
+            var playerHasWon = player.HasWon();
+
+            Assert.That(playerHasWon, Is.False);
+        }
     }
 
     internal class Player
     {
+        private readonly IEnumerable<Card> _cards;
+
         public Player(IEnumerable<Card> cards)
         {
-            
+            _cards = cards;
         }
 
         public bool HasWon()
         {
-            return true;
+            return _cards.Count() == 52;
         }
     }
 }
