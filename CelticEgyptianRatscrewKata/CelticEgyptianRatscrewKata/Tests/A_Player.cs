@@ -12,10 +12,10 @@ namespace CelticEgyptianRatscrewKata.Tests
         [Test]
         public void Has_Won_If_They_Have_All_The_Cards()
         {
-            var player = new Player(
+            var player = CreateSut(
                 Cards.With(
-                    Enumerable.Repeat(new Card(Suit.Clubs, Rank.Ace), 52).ToArray()), 
-                Mock.Of<ISnapRule>());
+                    Enumerable.Repeat(
+                        new Card(Suit.Clubs, Rank.Ace), 52).ToArray()));
             var hasWon = player.HasWon();
 
             Assert.That(hasWon);
@@ -24,7 +24,7 @@ namespace CelticEgyptianRatscrewKata.Tests
         [Test]
         public void Has_Not_Won_If_They_Do_Not_Have_All_The_Cards()
         {
-            var player = new Player(Cards.With(new Card(Suit.Clubs, Rank.Ace)), Mock.Of<ISnapRule>());
+            var player = CreateSut(Cards.With(new Card(Suit.Clubs, Rank.Ace)));
             
             var playerHasWon = player.HasWon();
 
@@ -38,11 +38,26 @@ namespace CelticEgyptianRatscrewKata.Tests
             var validSnap = new Mock<ISnapRule>();
             validSnap.Setup(x => x.IsValidFor(stack)).Returns(true);
 
-            var player = new Player(Cards.Empty(), validSnap.Object);
+            var player = CreateSut(Cards.Empty(), validSnap.Object);
             player.CallSnap(stack);
             var pile = player.Hand;
             
             CollectionAssert.AreEqual(stack, pile.Take(stack.Count()));
+        }
+
+        private static Player CreateSut(Cards hand = null, ISnapRule snapRule = null)
+        {
+            if (hand == null)
+            {
+                hand = Cards.Empty();
+            }
+
+            if (snapRule == null)
+            {
+                snapRule = Mock.Of<ISnapRule>();
+            }
+
+            return new Player(hand, snapRule);
         }
     }
 
