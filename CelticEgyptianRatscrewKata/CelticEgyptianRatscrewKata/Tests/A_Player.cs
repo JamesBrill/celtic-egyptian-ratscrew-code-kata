@@ -103,9 +103,9 @@ namespace CelticEgyptianRatscrewKata.Tests
 
         public void CallSnap(Cards stack)
         {
-            var cardList = _cards.ToList();
             if (_validSnap.IsValidFor(stack))
             {
+                var cardList = _cards.ToList();
                 cardList.InsertRange(0, stack);
                 _cards = Cards.With(cardList.ToArray());
             }
