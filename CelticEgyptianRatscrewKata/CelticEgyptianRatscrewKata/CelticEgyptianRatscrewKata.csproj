@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Player.cs" />
     <Compile Include="Rules\AllSnaps.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="Cards.cs" />
