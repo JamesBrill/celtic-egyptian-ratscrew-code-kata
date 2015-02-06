@@ -45,6 +45,22 @@ namespace CelticEgyptianRatscrewKata.Tests
             CollectionAssert.AreEqual(stack, pile.Take(stack.Count()));
         }
 
+        [Test]
+        public void Incorrectly_Calling_Snap_Has_No_Change_Made_To_Their_Pile()
+        {
+            var stack = Cards.With(
+                    new Card(Suit.Diamonds, Rank.Three));
+            var player = CreateSut(
+                Cards.With(
+                    new Card(Suit.Spades, Rank.Ace)));
+            var handBeforeCallingSnap = player.Hand;
+
+            player.CallSnap(stack);
+
+            var handAfterCallingSnap = player.Hand;
+            Assert.AreEqual(handBeforeCallingSnap, handAfterCallingSnap);
+        }
+
         private static Player CreateSut(Cards hand = null, ISnapRule snapRule = null)
         {
             if (hand == null)
@@ -64,10 +80,12 @@ namespace CelticEgyptianRatscrewKata.Tests
     internal class Player
     {
         private Cards _cards;
+        private readonly ISnapRule _validSnap;
 
         public Player(Cards cards, ISnapRule validSnap)
         {
             _cards = cards;
+            _validSnap = validSnap;
         }
 
         public Cards Hand
@@ -86,9 +104,11 @@ namespace CelticEgyptianRatscrewKata.Tests
         public void CallSnap(Cards stack)
         {
             var cardList = _cards.ToList();
-            cardList.InsertRange(0, stack);
-
-            _cards = Cards.With(cardList.ToArray());
+            if (_validSnap.IsValidFor(stack))
+            {
+                cardList.InsertRange(0, stack);
+                _cards = Cards.With(cardList.ToArray());
+            }
         }
     }
 }
