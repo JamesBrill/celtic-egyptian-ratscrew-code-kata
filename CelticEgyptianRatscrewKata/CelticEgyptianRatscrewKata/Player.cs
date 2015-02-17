@@ -20,6 +20,11 @@ namespace CelticEgyptianRatscrewKata
             {
                 return _cards;
             }
+
+            set
+            {
+                _cards = value;
+            }
         }
 
         public bool HasWon()

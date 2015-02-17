@@ -64,6 +64,7 @@
     <Compile Include="Tests\ShufflerTests.cs" />
     <Compile Include="Suit.cs" />
     <Compile Include="Rules\StandardSnap.cs" />
+    <Compile Include="Tests\The_Game.cs" />
     <Compile Include="Tests\ValidSnaps.cs" />
     <Compile Include="Rules\WindowedSnap.cs" />
   </ItemGroup>
